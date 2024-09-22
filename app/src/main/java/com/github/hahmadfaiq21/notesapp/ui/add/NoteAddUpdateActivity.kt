@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@Suppress("DEPRECATION")
 class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
     private var isEdit = false
     private var note: Note? = null
@@ -78,7 +79,7 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnSubmit.setOnClickListener(this)
 
-        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 showAlertDialog(ALERT_DIALOG_CLOSE)
             }

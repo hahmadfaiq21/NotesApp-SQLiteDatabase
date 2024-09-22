@@ -45,7 +45,8 @@ class NoteHelper(context: Context) {
             null,
             null,
             null,
-            null)
+            null
+        )
     }
 
     fun insert(values: ContentValues?): Long {

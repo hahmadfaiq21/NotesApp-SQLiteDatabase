@@ -9,4 +9,4 @@ data class Note(
     var title: String? = null,
     var description: String? = null,
     var date: String? = null
-): Parcelable
+) : Parcelable
