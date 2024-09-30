@@ -21,7 +21,7 @@ import java.util.Date
 import java.util.Locale
 
 @Suppress("DEPRECATION")
-class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
+class AddUpdateNoteActivity : AppCompatActivity(), View.OnClickListener {
     private var isEdit = false
     private var note: Note? = null
     private var position: Int = 0
@@ -114,7 +114,7 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                 } else {
                     Toast.makeText(
-                        this@NoteAddUpdateActivity,
+                        this@AddUpdateNoteActivity,
                         "Update data failed",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -130,7 +130,7 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                 } else {
                     Toast.makeText(
-                        this@NoteAddUpdateActivity,
+                        this@AddUpdateNoteActivity,
                         "Add data failed",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -191,7 +191,7 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
                         finish()
                     } else {
                         Toast.makeText(
-                            this@NoteAddUpdateActivity,
+                            this@AddUpdateNoteActivity,
                             "Delete data failed",
                             Toast.LENGTH_SHORT
                         ).show()

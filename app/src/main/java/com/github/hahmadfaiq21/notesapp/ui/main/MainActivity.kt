@@ -13,7 +13,7 @@ import com.github.hahmadfaiq21.notesapp.database.NoteHelper
 import com.github.hahmadfaiq21.notesapp.databinding.ActivityMainBinding
 import com.github.hahmadfaiq21.notesapp.helper.MappingHelper
 import com.github.hahmadfaiq21.notesapp.ui.adapter.NoteAdapter
-import com.github.hahmadfaiq21.notesapp.ui.add.NoteAddUpdateActivity
+import com.github.hahmadfaiq21.notesapp.ui.add.AddUpdateNoteActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -30,27 +30,27 @@ class MainActivity : AppCompatActivity() {
     ) { result ->
         if (result.data != null) {
             when (result.resultCode) {
-                NoteAddUpdateActivity.RESULT_ADD -> {
+                AddUpdateNoteActivity.RESULT_ADD -> {
                     val note =
-                        result.data?.getParcelableExtra<Note>(NoteAddUpdateActivity.EXTRA_NOTE) as Note
+                        result.data?.getParcelableExtra<Note>(AddUpdateNoteActivity.EXTRA_NOTE) as Note
                     adapter.addItem(note)
                     binding.rvNotes.smoothScrollToPosition(adapter.itemCount - 1)
                     showSnackBarMessage("Add note complete")
                 }
 
-                NoteAddUpdateActivity.RESULT_UPDATE -> {
+                AddUpdateNoteActivity.RESULT_UPDATE -> {
                     val note =
-                        result.data?.getParcelableExtra<Note>(NoteAddUpdateActivity.EXTRA_NOTE) as Note
+                        result.data?.getParcelableExtra<Note>(AddUpdateNoteActivity.EXTRA_NOTE) as Note
                     val position =
-                        result.data?.getIntExtra(NoteAddUpdateActivity.EXTRA_POSITION, 0) as Int
+                        result.data?.getIntExtra(AddUpdateNoteActivity.EXTRA_POSITION, 0) as Int
                     adapter.updateItem(position, note)
                     binding.rvNotes.smoothScrollToPosition(position)
                     showSnackBarMessage("Update note complete")
                 }
 
-                NoteAddUpdateActivity.RESULT_DELETE -> {
+                AddUpdateNoteActivity.RESULT_DELETE -> {
                     val position =
-                        result.data?.getIntExtra(NoteAddUpdateActivity.EXTRA_POSITION, 0) as Int
+                        result.data?.getIntExtra(AddUpdateNoteActivity.EXTRA_POSITION, 0) as Int
                     adapter.removeItem(position)
                     showSnackBarMessage("Delete note complete")
                 }
@@ -70,15 +70,15 @@ class MainActivity : AppCompatActivity() {
 
         adapter = NoteAdapter(object : NoteAdapter.OnItemClickCallback {
             override fun onItemClicked(selectedNote: Note?, position: Int?) {
-                val intent = Intent(this@MainActivity, NoteAddUpdateActivity::class.java)
-                intent.putExtra(NoteAddUpdateActivity.EXTRA_NOTE, selectedNote)
-                intent.putExtra(NoteAddUpdateActivity.EXTRA_POSITION, position)
+                val intent = Intent(this@MainActivity, AddUpdateNoteActivity::class.java)
+                intent.putExtra(AddUpdateNoteActivity.EXTRA_NOTE, selectedNote)
+                intent.putExtra(AddUpdateNoteActivity.EXTRA_POSITION, position)
                 resultLauncher.launch(intent)
             }
         })
         binding.rvNotes.adapter = adapter
         binding.fabAdd.setOnClickListener {
-            val intent = Intent(this@MainActivity, NoteAddUpdateActivity::class.java)
+            val intent = Intent(this@MainActivity, AddUpdateNoteActivity::class.java)
             resultLauncher.launch(intent)
         }
 
