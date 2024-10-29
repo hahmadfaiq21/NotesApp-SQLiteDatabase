@@ -38,7 +38,7 @@ A class used to store a set of key-value pairs, where keys are column names and 
 - Acts as a pointer to the dataset returned by the database. <br>
 
 ### 6. SQL Queries
-a. **DDL (Data Definition Language)**: SQL commands like CREATE, ALTER, DROP used for defining or modifying database schema.
+a. **DDL (Data Definition Language)**: SQL commands like CREATE, ALTER, DROP used for defining or modifying database schema.<br>
 b. **DML (Data Manipulation Language)**: SQL commands like INSERT, UPDATE, DELETE, SELECT used for manipulating data within the tables.
 
 ## NotesApp Interfaces
